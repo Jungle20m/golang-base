@@ -14,5 +14,12 @@ func main() {
 		fmt.Println(err)
 	}
 
-	fmt.Printf("config: %+v", config)
+	db, err := component.NewDatabase(config)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	appCtx := component.NewAppContext(db)
+
+	fmt.Println(appCtx.GetMysqlConnection())
 }
