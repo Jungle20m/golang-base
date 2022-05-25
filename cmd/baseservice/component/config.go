@@ -12,8 +12,14 @@ const (
 	FILE_CONFIG_LOCATION = "cmd\\baseservice\\config.yaml"
 )
 
+type AppConfig struct {
+	Host string `yaml:"host"`
+	Port int32  `yaml:"port"`
+}
+
 type Config struct {
 	Mysql general.MysqlConfig `yaml:"mysql"`
+	App   AppConfig           `yaml:"app"`
 }
 
 func LoadConfig() (*Config, error) {

@@ -4,14 +4,14 @@ import (
 	"gorm.io/gorm"
 )
 
-type appCtx struct {
+type AppCtx struct {
 	database *Database
 }
 
-func NewAppContext(db *Database) *appCtx {
-	return &appCtx{database: db}
+func NewAppContext(db *Database) *AppCtx {
+	return &AppCtx{database: db}
 }
 
-func (ctx *appCtx) GetMysqlConnection() *gorm.DB {
+func (ctx *AppCtx) GetMysqlConnection() *gorm.DB {
 	return ctx.database.mysql
 }
