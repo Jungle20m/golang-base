@@ -2,28 +2,30 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"log"
 
+	"github.com/Jungle20m/golang-base/cmd/service_01/component"
 	"github.com/Jungle20m/golang-base/utils"
-	"gorm.io/gorm"
 )
 
-// khởi tạo app context cần sử dụng cho app
-type AppContext struct {
-	mysql *gorm.DB
-}
-
 func main() {
-	fmt.Println("main starting...")
+	fmt.Println("Hello World")
 
-	mysql, err := utils.GetMysqlConnection("anhnv:anhnv!@#456@tcp(1.53.252.177:3306)/healthnet?charset=utf8mb4&parseTime=True&loc=Local")
+	config, err := component.LoadConfig("cmd\\service_01\\config.yaml")
 	if err != nil {
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
-	appCtx := AppContext{
-		mysql: mysql,
+	logger, err := utils.NewLoggerInstance(
+		config.Logger.Format,
+		config.Logger.Output,
+		config.Logger.Level,
+		config.Logger.Folder,
+		config.Logger.FileName,
+	)
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	fmt.Printf("%+v\n", appCtx)
+	logger.Info("test log")
 }

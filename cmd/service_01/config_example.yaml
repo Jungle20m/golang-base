@@ -1,0 +1,41 @@
+
+
+mysql:
+  dns: anhnv:anhnv!@#456@tcp(1.53.252.177:3307)/shopping?charset=utf8mb4&parseTime=True&loc=Local
+
+kafka:
+  brokers: host1:9092,host2:9092,host3:9092
+  shopping_data_topic:
+    # mypoint.shopping-online.data
+    name: mypoint.zzz
+    group_id: 1
+
+# log: cấu hình hệ thống log.
+logger:
+  # output int. Các giá trị không hợp lệ được coi như mặc định
+  # 0: mặc định, log ra terminal - dành cho dev
+  # 1: log ra file
+  output: 1
+  # folder chứa file log trong trường hợp log ra file
+  # đường dẫn đầy đủ, ví dụ
+  # linux: /opt/log/service
+  # window: C:\log\service
+  folder: D:\SourceCode\Mypoint\ShoppingOnline\v1\cmd\datanormalization\log
+  # tên file log, trong trường hợp log ra file
+  # ví dụ: example.log 
+  file_name: data.log
+  # formater: kiểu format của output
+  # 0: mặc định, format text - dành cho dev
+  # 1: format json - dành cho production
+  format: 1
+  # level: level log. giá trị càng lớn thì thông tin càng nhiều. Nằm ngoài giá trị hợp lệ thì lấy mặc định = 6
+  # 0: PanicLevel
+  # 1: FatalLevel
+  # 2: ErrorLevel
+  # 3: WarnLevel
+  # 4: InfoLevel
+  # 5: DebugLevel
+  # 6: TraceLevel
+  level: 6
+
+
